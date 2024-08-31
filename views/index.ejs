@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get to know the weather</title>
+    <link rel="stylesheet" href="styles\style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/aa719d2a88.js" crossorigin="anonymous"></script>
+<!--    <style>-->
+<!--        body {-->
+<!--            <%= content.background%>-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+<div class="body">
+    <div id="navbar">
+        <a href="/" class="icon"><img class="image1" src="images\default-icon.png" alt="default-icon"></a>
+        <form id="search" method="post">
+            <input type="text" id="search_query" name="search_query" placeholder="Search">
+            <button type="submit" id="get" value="GET" class="fa-solid fa-magnifying-glass fa-2xl" formaction="/get-data"></button>
+        </form>
+        <i id="icon1" class="fa-solid fa-magnifying-glass fa-2xl" ></i>
+    </div>
+        <div id="main-part">
+
+            <% if (content != "Waiting for data..." ) { %>
+            <div id="result">
+                <i class="big-picture"><img class="big-picture"    src="<%=content.image_url%>" alt=""></i>
+                <div class="result-text">
+                    <h2 class="temp"><%= content.data2.current.temp.toString().slice(0, 2) %>°C</h2>
+                    <div class="result-middle-text">
+                        <img class="medium-picture" src="<%=content.image_url%>" alt="">
+                        <div class="result-middle-subtext">
+                            <p class="desc"><%= content.data2.current.weather[0].description %></p>
+                            <p class="location"> <%= content.data1.name %>, <%= content.data1.country  %></p>
+                        </div>
+                    </div>
+                    <div class="info" >
+                        <div class="sub-info">
+                            <img src="images\humidity.png" alt="">
+                            <div>
+                                <p class="little-stats" ><%= content.data2.current.humidity %>%</p>
+                                <p class="little-info" >Humidity</p>
+                            </div>
+                        </div>
+                        <div class="sub-info">
+                            <img src="images\wind.png" alt="">
+                            <div>
+                                <p class="little-stats"><%= content.data2.current.wind_speed %> Km\H</p>
+                                <p class="little-info">Wind Speed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <% } else { %>
+                <h1 class="welcome-message">Enter the city name</h1>
+            <% } %>
+        </div>
+    </div>
+<script src="js\script.js"></script>
+</body>
+</html>

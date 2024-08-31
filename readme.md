@@ -1,0 +1,1 @@
+This repository contains my website which works with OpenWeather API. The project is for learning purposes.
